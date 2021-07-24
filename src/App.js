@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import HttpClient from "./HttpClient"
+import './App.css'
 
 const App = () => {
   const [apod, setApod] = useState({})
@@ -11,27 +12,22 @@ const App = () => {
   }, [])
 
   return (
-    <div style={{ maxWidth: 900, padding: 30 }}>
-      <h1>NASA API</h1>
-      <h2>Astronomy Picture of the Day</h2>
-      {apod && (
-        <article>
-          <header>
-            {apod.title} - <i>{apod.date}</i>
-          </header>
-          <img src={apod.url} alt="APOD" width="800" height="auto" />
-          <p>{apod.explanation}</p>
-          <pre
-            style={{
-              overflowX: "auto",
-              whiteSpace: "pre-wrap",
-              wordWrap: "break-word",
-            }}
-          >
+    <div className="container">
+      <div className="main">
+        
+        <h1>NASA API</h1>
+        <h2>Astronomy Picture of the Day</h2>
+        {apod && (
+          <article>
+            <header>
+              {apod.title} - <i>{apod.date}</i>
+            </header>
+            <img className="mainImage" src={apod.url} alt="APOD"/>
+            <p className="mainText">{apod.explanation}</p>
             <hr />
-          </pre>
-        </article>
-      )}
+          </article>
+        )}
+      </div>
     </div>
   )
 }
